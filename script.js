@@ -3,7 +3,6 @@
   // 1. include this pen in your pen's javascript assets
   // 2. create a new instance with `var preview = new PreviewImage("path/to/your/image.jpg");
   // 3. kill it when you want it to go away `p.clear();`
-  //p.clear();
   var Bullet, Enemy, Player, PreviewImage, bulletEnemyHandler, bullet_time, bullets, bullets_count, checkInput, controls, create, currentHorizontalDirection, currentVerticalDirection, drawShape, enemies, enemies_bullets, enemies_count, game, gameOver, killEnemy, max_delay, min_delay, motion, motionUpdate, motion_timer, moveBullets, moveEnemies, movePlayer, nextLevel, player, playerEnemyHandler, preload, preview, render, resetGame, score, score_text, slowDownTime, spawnText, speed, speedUpTime, text, time, update, updateMotion, updateScore;
 
   PreviewImage = function(url) {
@@ -70,7 +69,7 @@
 
   currentHorizontalDirection = false;
 
-  preview = new PreviewImage("https://s3-us-west-2.amazonaws.com/s.cdpn.io/150586/superhot2d.png"); //PREVIEW IMAGE
+  preview = new PreviewImage("https://s3-us-west-2.amazonaws.com/s.cdpn.io/150586/supershoot.png"); //PREVIEW IMAGE
 
   
   //---------------------------------------------------
@@ -118,7 +117,7 @@
   resetGame = function() {
     var bullet, enemy, i;
     
-    //remove and resets everything
+    //nuke everything
     game.world.removeAll();
     //score text
     score_text = game.add.text(game.world.width - 60, 10, score);
@@ -301,7 +300,7 @@
     resetGame();
     spawnText("SUPER");
     return game.time.events.add(Phaser.Timer.SECOND * 0.5, function() {
-      return spawnText("HOT");
+      return spawnText("SHOOT");
     }, this);
   };
 
