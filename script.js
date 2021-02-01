@@ -151,7 +151,7 @@
       i++;
     }
     
-    //create a new timer. this timer will act as our motion timer that we'll use to update time and motion instead of the main game update loop
+    //create a new timer. this timer will act as our motion timer that we'll use to update time and motion instead of the main game update loop. If the game update loops breaks, the motion will stay constant
     return motion_timer = game.time.events.loop(60, motionUpdate, this);
   };
 
@@ -298,21 +298,21 @@
     // increase enemies and reset the game
     enemies_count++;
     resetGame();
-    spawnText("SUPER");
-    return game.time.events.add(Phaser.Timer.SECOND * 0.5, function() {
-      return spawnText("SHOOT");
+    spawnText("BOX MAN FOR YOU");
+    return game.time.events.add(Phaser.Timer.SECOND * 1.5, function() {
+      return spawnText("SUPERSHOOT: SAGA EDITION #3");
     }, this);
   };
 
   
   //SPAWN TEXT
-  spawnText = function(text = false, lifespan = 0.5) {
+  spawnText = function(text = false, lifespan = 1.5) {
     if (text) {
       text = game.add.text(game.world.centerX, game.world.centerY, text);
       text.anchor.set(0.5);
       text.align = 'center';
       text.font = 'Orbitron';
-      text.fontSize = 150;
+      text.fontSize = 45;
       text.fill = '#ff0000';
       return game.time.events.add(Phaser.Timer.SECOND * lifespan, function() {
         return text.kill();
